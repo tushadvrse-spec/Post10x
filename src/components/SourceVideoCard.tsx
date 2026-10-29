@@ -14,6 +14,8 @@ import {
   FileVideo,
   Sparkles,
   Loader2,
+  Smartphone,
+  Layers,
 } from 'lucide-react';
 
 interface SourceVideoCardProps {
@@ -36,6 +38,7 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [processingStatus, setProcessingStatus] = useState('');
+  const [showSafeZones, setShowSafeZones] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Handle Drag & Drop
@@ -137,10 +140,10 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
             }`}
           >
             {isInputState
-              ? 'Select Source'
+              ? 'Select 9:16 Short'
               : video.platform === 'upload'
-              ? 'Uploaded Master'
-              : 'Original Master'}
+              ? 'Uploaded 9:16 Short'
+              : '9:16 Short Master'}
           </span>
         </div>
 
@@ -170,7 +173,7 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
               }`}
             >
               <Upload className="w-3.5 h-3.5" />
-              <span>Upload Video</span>
+              <span>Upload 9:16 Video</span>
             </button>
             <button
               type="button"
@@ -182,7 +185,7 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
               }`}
             >
               <LinkIcon className="w-3.5 h-3.5" />
-              <span>Add Video Link</span>
+              <span>Add Short Link</span>
             </button>
           </div>
 
@@ -213,7 +216,7 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
                     <Loader2 className="w-6 h-6" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-xs font-bold text-white">Ingesting Raw Video</p>
+                    <p className="text-xs font-bold text-white">Ingesting 9:16 Short Video</p>
                     <p className="text-[11px] text-[#00e599] font-mono">{processingStatus}</p>
                   </div>
                   <div className="w-48 h-1.5 bg-[#18202c] rounded-full mx-auto overflow-hidden">
@@ -223,20 +226,20 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
               ) : (
                 <>
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#18212e] to-[#111721] border border-[#273448] flex items-center justify-center mb-3 shadow-lg">
-                    <Upload className="w-5 h-5 text-[#00e599]" />
+                    <Smartphone className="w-5 h-5 text-[#00e599]" />
                   </div>
 
                   <p className="text-xs font-bold text-white mb-1">
-                    Drop your raw video here, or{' '}
+                    Drop your 9:16 vertical video here, or{' '}
                     <span className="text-[#00e599] underline underline-offset-2">browse files</span>
                   </p>
                   <p className="text-[11px] text-[#718296] max-w-xs mb-3">
-                    Supports MP4, MOV, WebM • 9:16 vertical or 16:9 widescreen (up to 500MB)
+                    Exclusively for 9:16 vertical short-form (Reels, TikTok, Shorts • 15s to 90s)
                   </p>
 
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#161c26] border border-[#243042] text-[11px] font-semibold text-[#8ea0b5] hover:text-white transition-colors">
                     <FileVideo className="w-3.5 h-3.5 text-[#00e599]" />
-                    Select Video from Computer
+                    Select 9:16 Video from Computer
                   </span>
                 </>
               )}
@@ -252,7 +255,7 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
                     <Loader2 className="w-6 h-6" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-xs font-bold text-white">Downloading & Analyzing</p>
+                    <p className="text-xs font-bold text-white">Analyzing 9:16 Short Link</p>
                     <p className="text-[11px] text-[#00e599] font-mono">{processingStatus}</p>
                   </div>
                   <div className="w-48 h-1.5 bg-[#18202c] rounded-full mx-auto overflow-hidden">
@@ -263,7 +266,7 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
                 <>
                   <div className="space-y-2">
                     <label className="block text-xs font-semibold text-[#8e98a8]">
-                      Paste Instagram Reel, TikTok, or YouTube Shorts link:
+                      Paste 9:16 Instagram Reel, TikTok, or YouTube Shorts link:
                     </label>
 
                     <div className="relative">
@@ -272,19 +275,19 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
                         type="url"
                         value={inputUrl}
                         onChange={(e) => setInputUrl(e.target.value)}
-                        placeholder="https://instagram.com/reel/... or youtube.com/shorts/..."
+                        placeholder="https://instagram.com/reel/... or tiktok.com/@user/video/... or youtube.com/shorts/..."
                         className="w-full bg-[#0d1015] border border-[#222936] rounded-xl pl-9 pr-3 py-2.5 text-xs text-white placeholder-[#505d6e] focus:outline-none focus:border-[#00e599] transition-colors"
                       />
                     </div>
 
                     <div className="flex items-center justify-between text-[11px] pt-1">
-                      <span className="text-[#65768a]">Supported: IG Reels, TikTok, YT Shorts</span>
+                      <span className="text-[#65768a]">Supported: IG Reels, TikTok, YT Shorts (9:16)</span>
                       <button
                         type="button"
                         onClick={handleSampleUrl}
                         className="text-[#00e599] hover:underline font-medium"
                       >
-                        ⚡ Use Sample DOAC Video
+                        ⚡ Use Sample 9:16 Short
                       </button>
                     </div>
                   </div>
@@ -309,15 +312,39 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
           </div>
         </div>
       ) : (
-        /* STATE 2: LOADED VIDEO PREVIEW (Shown after upload or link) */
+        /* STATE 2: LOADED VIDEO PREVIEW (Dedicated 9:16 Short-Form Format) */
         <div className="space-y-4 flex-1 flex flex-col justify-between">
-          {/* Source Video Preview Screen */}
-          <div className="relative rounded-lg overflow-hidden border border-[#1f2633] bg-black group">
-            <div className="aspect-video w-full relative">
+          {/* 9:16 Video Stage Canvas */}
+          <div className="relative rounded-xl overflow-hidden border border-[#1f2638] bg-[#080a0e] flex flex-col items-center justify-center p-3 sm:p-4 group">
+            {/* Stage Controls Header: Format pill & Safe-zones toggle */}
+            <div className="w-full max-w-[260px] flex items-center justify-between mb-2.5 px-0.5">
+              <span className="text-[10px] font-mono font-bold text-[#00e599] bg-[#00e599]/10 px-2 py-0.5 rounded border border-[#00e599]/25 flex items-center gap-1">
+                <Smartphone className="w-3 h-3 text-[#00e599]" />
+                9:16 VERTICAL
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setShowSafeZones(!showSafeZones)}
+                className={`text-[10px] px-2 py-0.5 rounded border transition-colors flex items-center gap-1 font-mono ${
+                  showSafeZones
+                    ? 'bg-[#00e599]/20 text-[#00e599] border-[#00e599]/40'
+                    : 'bg-[#151a24] text-[#718296] hover:text-white border-[#222b3b]'
+                }`}
+                title="Toggle UI Safe Zones for TikTok & Instagram Reels"
+              >
+                <Layers className="w-3 h-3" />
+                <span>Safe Zones: {showSafeZones ? 'ON' : 'OFF'}</span>
+              </button>
+            </div>
+
+            {/* 9:16 Vertical Smartphone Screen */}
+            <div className="relative w-full max-w-[260px] aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#242e3f] shadow-2xl bg-black group/player">
               {video.videoBlobUrl ? (
                 <video
                   src={video.videoBlobUrl}
                   controls
+                  playsInline
                   className="w-full h-full object-cover"
                   poster={video.thumbnailUrl}
                 />
@@ -327,44 +354,82 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
                     src={video.thumbnailUrl}
                     alt={video.title}
                     className={`w-full h-full object-cover transition-opacity duration-300 ${
-                      isPlaying ? 'opacity-80' : 'opacity-90'
+                      isPlaying ? 'opacity-80' : 'opacity-95'
                     }`}
                   />
 
                   {/* Centered Play Button */}
                   <button
                     onClick={() => setIsPlaying(!isPlaying)}
-                    className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#00e599] hover:bg-[#00ffaa] text-black flex items-center justify-center shadow-lg shadow-[#00e599]/30 hover:scale-105 transition-transform"
+                    className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#00e599] hover:bg-[#00ffaa] text-black flex items-center justify-center shadow-lg shadow-[#00e599]/35 hover:scale-105 transition-all"
                   >
                     <Play className="w-5 h-5 fill-black ml-0.5" />
                   </button>
                 </>
               )}
 
-              {/* Video Metadata Badges */}
-              <div className="absolute top-2.5 left-2.5 flex items-center gap-2 pointer-events-none">
-                <span className="bg-black/80 backdrop-blur-md text-[10px] font-bold text-white px-2 py-0.5 rounded border border-white/10 uppercase tracking-wider">
-                  {video.platform === 'youtube'
-                    ? 'DOAC / Master'
-                    : video.platform === 'upload'
-                    ? 'Uploaded Master'
-                    : video.platform}
+              {/* TikTok / Reels UI Safe Zones Overlay */}
+              {showSafeZones && (
+                <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-2.5">
+                  <div className="border border-dashed border-[#00e599]/50 rounded py-1 px-1.5 text-[8.5px] text-[#00e599] bg-black/60 text-center font-mono">
+                    Top Bar Safe Zone
+                  </div>
+                  <div className="flex justify-between items-center px-1">
+                    <div className="border border-dashed border-[#38bdf8]/50 rounded p-1 text-[8px] text-[#38bdf8] bg-black/60 font-mono">
+                      Feed Center
+                    </div>
+                    {/* Simulated Right-Rail Action Icons Safe Area */}
+                    <div className="border border-dashed border-red-400/60 rounded p-1.5 text-[8px] text-red-300 bg-black/60 font-mono text-right space-y-1">
+                      <div>♥ Likes</div>
+                      <div>💬 Comments</div>
+                      <div>↗ Share</div>
+                    </div>
+                  </div>
+                  <div className="border border-dashed border-amber-400/60 rounded p-1.5 text-[8px] text-amber-300 bg-black/60 text-center font-mono">
+                    Bottom Captions & Audio Safe Zone
+                  </div>
+                </div>
+              )}
+
+              {/* Top-Right Resolution Badge */}
+              <div className="absolute top-2.5 right-2.5 pointer-events-none">
+                <span className="bg-black/80 backdrop-blur-md text-[9px] font-mono text-white/90 px-1.5 py-0.5 rounded border border-white/10">
+                  1080×1920
                 </span>
               </div>
 
               {/* Bottom Video Title Banner (if not playing local video) */}
               {!video.videoBlobUrl && (
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 pt-6 pointer-events-none">
-                  <h3 className="text-sm font-bold text-white line-clamp-1 mb-0.5">
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/85 to-transparent p-3 pt-8 pointer-events-none">
+                  <h3 className="text-xs font-bold text-white line-clamp-1 mb-0.5">
                     {video.title}
                   </h3>
-                  <p className="text-[11px] text-[#93a2b5] flex items-center gap-1.5">
-                    <span>{video.durationFormatted}</span>
-                    <span>•</span>
-                    <span className="text-[#00e599]">Original 1080p Master</span>
+                  <p className="text-[10px] text-[#93a2b5] flex items-center justify-between">
+                    <span className="text-[#00e599] font-mono">{video.durationFormatted}</span>
+                    <span className="font-mono">Short-Form Master</span>
                   </p>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* 9:16 Short-Form Specs Row */}
+          <div className="grid grid-cols-4 gap-2 text-center text-[10px] bg-[#0c0f14] border border-[#1c222c] rounded-lg p-2 font-mono">
+            <div>
+              <span className="text-[#5e7085] block text-[9px] uppercase">Format</span>
+              <span className="text-[#00e599] font-bold">9:16 Vertical</span>
+            </div>
+            <div>
+              <span className="text-[#5e7085] block text-[9px] uppercase">Resolution</span>
+              <span className="text-white font-medium">1080 × 1920</span>
+            </div>
+            <div>
+              <span className="text-[#5e7085] block text-[9px] uppercase">Length</span>
+              <span className="text-white font-medium">{video.durationFormatted}</span>
+            </div>
+            <div>
+              <span className="text-[#5e7085] block text-[9px] uppercase">Target</span>
+              <span className="text-[#38bdf8] font-medium">Reels/Shorts</span>
             </div>
           </div>
 

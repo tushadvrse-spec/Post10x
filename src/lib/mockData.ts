@@ -2,12 +2,12 @@ import { SourceVideo, VideoVariation, TargetChannel, ScheduledPost } from './typ
 
 export const initialSourceVideo: SourceVideo = {
   id: 'vid_source_1',
-  title: "ChatGPT Whistleblower WARNS: 'You're Being LIED To'",
+  title: '3 AI Video Secrets Top Creators Gatekeep (9:16)',
   url: 'https://youtube.com/shorts/dQw4w9WgXcQ',
-  duration: 1201,
-  durationFormatted: '20 minutes (1201s)',
+  duration: 44,
+  durationFormatted: '0:44 (Short Master)',
   platform: 'youtube',
-  thumbnailUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+  thumbnailUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=720&h=1280&q=80',
   creatorName: 'Alex Thorne',
   creatorAvatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
   avatarProfile: {

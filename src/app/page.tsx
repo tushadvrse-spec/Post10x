@@ -362,6 +362,9 @@ export default function Home() {
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#18202c] text-[#788ca5] font-mono border border-[#232e3d]">
                       {variations.length} variations
                     </span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#00e599]/10 text-[#00e599] font-mono border border-[#00e599]/20 hidden sm:inline-block">
+                      9:16 Vertical Only
+                    </span>
                   </div>
                 </div>
 

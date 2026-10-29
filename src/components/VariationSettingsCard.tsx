@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Sparkles, Sliders, Zap, Check, Wand2 } from 'lucide-react';
+import { Sparkles, Sliders, Zap, Check, Wand2, Smartphone, Film } from 'lucide-react';
 
 interface VariationSettingsCardProps {
   variationCount: number;
@@ -33,16 +33,43 @@ export const VariationSettingsCard: React.FC<VariationSettingsCardProps> = ({
           </span>
           <span className="text-[10px] text-[#00e599] font-medium flex items-center gap-1">
             <Zap className="w-3 h-3" />
-            <span>AI Multiplier</span>
+            <span>AI Short Multiplier</span>
           </span>
         </div>
 
-        <p className="text-xs text-[#8e98a8] mb-4">
-          Choose auto detection or specify custom psychological angles for your variations.
+        <p className="text-xs text-[#8e98a8] mb-3">
+          Multiply 1 vertical short into {variationCount} distinct 9:16 viral variations with unique hook angles.
         </p>
 
+        {/* 9:16 Short-Form Multiplication Specs Card */}
+        <div className="bg-[#0b0e13] border border-[#1d2430] rounded-lg p-3 mb-4">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <Smartphone className="w-3.5 h-3.5 text-[#00e599]" />
+              <span className="text-xs font-semibold text-white">Target Video Format</span>
+            </div>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#00e599]/15 text-[#00e599] border border-[#00e599]/30 font-bold">
+              9:16 LOCKED
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-center text-[10px] text-[#8e98a8]">
+            <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
+              <span className="text-[#556578] block text-[9px] uppercase font-mono">Platform</span>
+              <span className="text-white font-medium truncate">Reels • TikTok • Shorts</span>
+            </div>
+            <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
+              <span className="text-[#556578] block text-[9px] uppercase font-mono">Aspect Ratio</span>
+              <span className="text-[#00e599] font-mono font-bold">9:16 (1080×1920)</span>
+            </div>
+            <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
+              <span className="text-[#556578] block text-[9px] uppercase font-mono">Subtitles</span>
+              <span className="text-[#38bdf8] font-medium">Dynamic 60fps</span>
+            </div>
+          </div>
+        </div>
+
         {/* Mode Selector Buttons */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex gap-2 mb-4">
           <button
             onClick={() => setDetectionMode('auto')}
             className={`flex items-center gap-1.5 text-xs px-3.5 py-1.5 rounded-lg font-medium transition-all ${
@@ -80,7 +107,7 @@ export const VariationSettingsCard: React.FC<VariationSettingsCardProps> = ({
           </div>
 
           <p className="text-[11px] text-[#788799] mb-3">
-            Detects the top {variationCount} highest-retention moments and generates distinct script angles.
+            Generates {variationCount} distinct 9:16 short-form variations with tailored viral hooks and subtitle pacing.
           </p>
 
           {/* Number Pill Buttons */}
@@ -108,7 +135,7 @@ export const VariationSettingsCard: React.FC<VariationSettingsCardProps> = ({
               Credit Cost:{' '}
               <strong className="text-white font-semibold">{creditCost} credits</strong>
             </span>
-            <span className="text-[#647284]">2 credits per variation</span>
+            <span className="text-[#647284]">2 credits per 9:16 variation</span>
           </div>
         </div>
       </div>
@@ -128,15 +155,15 @@ export const VariationSettingsCard: React.FC<VariationSettingsCardProps> = ({
             <>
               <Wand2 className="w-4 h-4 animate-spin text-[#00e599]" />
               <div className="text-left">
-                <p className="leading-tight text-xs font-bold">Synthesizing Variations...</p>
+                <p className="leading-tight text-xs font-bold">Synthesizing 9:16 Variations...</p>
                 <p className="text-[10px] text-[#00e599]/80 font-normal">{generationStep}</p>
               </div>
             </>
           ) : (
             <>
-              <span>Generate {variationCount} Variations</span>
+              <span>Generate {variationCount} 9:16 Variations</span>
               <span className="text-xs font-normal opacity-80">
-                (Ready to generate {variationCount} variations • {creditCost} credits)
+                (Synthesize {variationCount} vertical shorts • {creditCost} credits)
               </span>
             </>
           )}

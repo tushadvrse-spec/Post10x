@@ -65,8 +65,8 @@ export const AvatarModal: React.FC<AvatarModalProps> = ({
         <div className="p-6 space-y-6 max-h-[80vh] overflow-y-auto">
           {/* Twin Visuals & 3D Mesh Inspection */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Visual Frame */}
-            <div className="relative aspect-video rounded-xl overflow-hidden border border-[#222b3a] bg-black">
+            {/* Visual Frame (9:16 Portrait Mesh) */}
+            <div className="relative aspect-[9/14] sm:aspect-[9/16] max-h-[340px] mx-auto w-full rounded-xl overflow-hidden border border-[#222b3a] bg-black">
               <img
                 src={video.thumbnailUrl}
                 alt="Face Mesh Preview"

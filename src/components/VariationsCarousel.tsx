@@ -61,9 +61,9 @@ export const VariationsCarousel: React.FC<VariationsCarouselProps> = ({
         <div className="flex items-center gap-2.5">
           <div className="w-2 h-2 rounded-full bg-[#00e599] animate-pulse" />
           <h2 className="text-xs font-bold tracking-wider text-[#a0afc2] uppercase flex items-center gap-2">
-            Generated 10x Variations
+            Generated 9:16 Variations
             <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#18202c] text-[#00e599] font-mono border border-[#00e599]/30">
-              {variations.length} clips ready
+              9:16 • {variations.length} shorts ready
             </span>
           </h2>
           <span className="text-xs text-[#6e7d90] hidden md:inline">
@@ -153,7 +153,7 @@ export const VariationsCarousel: React.FC<VariationsCarouselProps> = ({
               </div>
 
               {/* 9:16 Video Preview Frame */}
-              <div className="relative aspect-[9/14] bg-black overflow-hidden group/video">
+              <div className="relative aspect-[9/16] bg-black overflow-hidden group/video">
                 <img
                   src={item.thumbnailUrl}
                   alt={item.title}
