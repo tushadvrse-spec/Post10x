@@ -312,10 +312,10 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
           </div>
         </div>
       ) : (
-        /* STATE 2: LOADED VIDEO PREVIEW (Two-column layout inside card: Phone on Left, Specs & AI Profile on Right) */
+        /* STATE 2: LOADED VIDEO PREVIEW (Clean Side-by-Side: 9:16 Phone on Left, Identity & Twin on Right) */
         <div className="flex-1 flex flex-col sm:flex-row gap-4 items-center sm:items-stretch">
           {/* Left Side: 9:16 Vertical Smartphone Viewport */}
-          <div className="relative w-[175px] shrink-0 aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#242e3f] shadow-2xl bg-black group/player self-center sm:self-auto">
+          <div className="relative w-[140px] shrink-0 aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#242e3f] shadow-xl bg-black group/player self-center sm:self-auto">
             {video.videoBlobUrl ? (
               <video
                 src={video.videoBlobUrl}
@@ -338,9 +338,9 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="absolute inset-0 m-auto w-11 h-11 rounded-full bg-[#00e599] hover:bg-[#00ffaa] text-black flex items-center justify-center shadow-lg shadow-[#00e599]/40 hover:scale-105 transition-all"
+                  className="absolute inset-0 m-auto w-10 h-10 rounded-full bg-[#00e599] hover:bg-[#00ffaa] text-black flex items-center justify-center shadow-lg shadow-[#00e599]/40 hover:scale-105 transition-all"
                 >
-                  <Play className="w-5 h-5 fill-black ml-0.5" />
+                  <Play className="w-4 h-4 fill-black ml-0.5" />
                 </button>
               </>
             )}
@@ -369,36 +369,34 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
 
             {/* Top-Left 9:16 Badge */}
             <div className="absolute top-2 left-2 pointer-events-none">
-              <span className="bg-black/85 backdrop-blur-md text-[8.5px] font-mono text-[#00e599] px-1.5 py-0.5 rounded border border-[#00e599]/30 font-bold flex items-center gap-1">
+              <span className="bg-black/85 backdrop-blur-md text-[8px] font-mono text-[#00e599] px-1.5 py-0.5 rounded border border-[#00e599]/30 font-bold flex items-center gap-1">
                 <Smartphone className="w-2.5 h-2.5" />
                 9:16
               </span>
             </div>
 
-            {/* Top-Right Resolution Badge */}
-            <div className="absolute top-2 right-2 pointer-events-none">
-              <span className="bg-black/80 backdrop-blur-md text-[8px] font-mono text-white/90 px-1.5 py-0.5 rounded border border-white/10">
-                FHD
-              </span>
-            </div>
-
             {/* Bottom Duration Badge */}
             <div className="absolute bottom-2 right-2 pointer-events-none">
-              <span className="bg-black/85 backdrop-blur-md text-[9px] font-mono text-white/90 px-1.5 py-0.5 rounded border border-white/10">
+              <span className="bg-black/85 backdrop-blur-md text-[8.5px] font-mono text-white/90 px-1.5 py-0.5 rounded border border-white/10">
                 {video.durationFormatted}
               </span>
             </div>
           </div>
 
-          {/* Right Side: Video Details, Specs & AI Biometrics */}
-          <div className="flex-1 flex flex-col justify-between space-y-2 min-w-0">
+          {/* Right Side: Video Details, Badges & AI Creator Profile */}
+          <div className="flex-1 flex flex-col justify-between space-y-2.5 min-w-0">
             {/* Video Metadata Header */}
             <div>
-              <div className="flex items-center justify-between gap-1 mb-1">
-                <span className="text-[10px] font-mono text-[#00e599] font-semibold bg-[#00e599]/10 px-2 py-0.5 rounded border border-[#00e599]/20 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-[#00e599]" />
-                  Short-Form Master
-                </span>
+              <div className="flex items-center justify-between gap-1 mb-1.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[10px] font-mono text-[#00e599] font-semibold bg-[#00e599]/10 px-2 py-0.5 rounded border border-[#00e599]/20 flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-[#00e599]" />
+                    9:16 Short Master
+                  </span>
+                  <span className="text-[10px] font-mono text-[#718296] bg-[#0d1015] px-2 py-0.5 rounded border border-[#1e2533]">
+                    1080×1920
+                  </span>
+                </div>
 
                 <button
                   type="button"
@@ -423,34 +421,9 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
               </p>
             </div>
 
-            {/* Short-Form Specifications Grid */}
-            <div className="bg-[#0b0e13] border border-[#1d2430] rounded-lg p-2.5">
-              <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block mb-1.5 font-mono">
-                Short Video Specs
-              </span>
-              <div className="grid grid-cols-2 gap-1.5 text-[11px]">
-                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
-                  <span className="text-[#556578] block text-[9px] uppercase font-mono">Aspect Ratio</span>
-                  <span className="text-[#00e599] font-mono font-bold">9:16 (1080×1920)</span>
-                </div>
-                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
-                  <span className="text-[#556578] block text-[9px] uppercase font-mono">Duration</span>
-                  <span className="text-white font-mono font-medium">{video.durationFormatted}</span>
-                </div>
-                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
-                  <span className="text-[#556578] block text-[9px] uppercase font-mono">Frame Rate</span>
-                  <span className="text-white font-mono font-medium">60 FPS Smooth</span>
-                </div>
-                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
-                  <span className="text-[#556578] block text-[9px] uppercase font-mono">Distribution</span>
-                  <span className="text-[#38bdf8] font-mono font-medium truncate">Reels/Shorts/TikTok</span>
-                </div>
-              </div>
-            </div>
-
             {/* AI Creator Profile Module */}
-            <div className="bg-[#0b0e13] border border-[#1d2430] rounded-lg p-2.5">
-              <div className="flex items-center justify-between mb-1.5">
+            <div className="bg-[#0b0e13] border border-[#1d2430] rounded-xl p-3">
+              <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-1.5">
                   <Cpu className="w-3.5 h-3.5 text-[#00e599]" />
                   <span className="text-xs font-semibold text-white">AI Creator Profile</span>
@@ -466,22 +439,22 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
                 </button>
               </div>
 
-              <div className="grid grid-cols-2 gap-1.5 text-[11px]">
-                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533] flex items-center gap-1.5">
+              <div className="grid grid-cols-2 gap-2 text-[11px]">
+                <div className="bg-[#12161f] p-2 rounded-lg border border-[#1e2533] flex items-center gap-2">
                   <CheckCircle className="w-3.5 h-3.5 text-[#00e599] shrink-0" />
                   <div className="truncate">
-                    <p className="font-semibold text-white truncate text-[10px]">Mesh Synced</p>
-                    <p className="text-[9px] text-[#718296] font-mono">
-                      {video.avatarProfile.confidenceScore}% Match
+                    <p className="font-semibold text-white truncate text-[10.5px]">Mesh Synced</p>
+                    <p className="text-[9.5px] text-[#718296] font-mono">
+                      {video.avatarProfile.confidenceScore}% Landmark Match
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533] flex items-center gap-1.5">
+                <div className="bg-[#12161f] p-2 rounded-lg border border-[#1e2533] flex items-center gap-2">
                   <Mic className="w-3.5 h-3.5 text-[#00e599] shrink-0" />
                   <div className="truncate">
-                    <p className="font-semibold text-white truncate text-[10px]">Voice Cloned</p>
-                    <p className="text-[9px] text-[#718296] font-mono">44.1kHz Studio</p>
+                    <p className="font-semibold text-white truncate text-[10.5px]">Voice Cloned</p>
+                    <p className="text-[9.5px] text-[#718296] font-mono">44.1kHz Studio HD</p>
                   </div>
                 </div>
               </div>
