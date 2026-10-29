@@ -312,166 +312,177 @@ export const SourceVideoCard: React.FC<SourceVideoCardProps> = ({
           </div>
         </div>
       ) : (
-        /* STATE 2: LOADED VIDEO PREVIEW (Dedicated 9:16 Short-Form Format) */
-        <div className="space-y-4 flex-1 flex flex-col justify-between">
-          {/* 9:16 Video Stage Canvas */}
-          <div className="relative rounded-xl overflow-hidden border border-[#1f2638] bg-[#080a0e] flex flex-col items-center justify-center p-3 sm:p-4 group">
-            {/* Stage Controls Header: Format pill & Safe-zones toggle */}
-            <div className="w-full max-w-[260px] flex items-center justify-between mb-2.5 px-0.5">
-              <span className="text-[10px] font-mono font-bold text-[#00e599] bg-[#00e599]/10 px-2 py-0.5 rounded border border-[#00e599]/25 flex items-center gap-1">
-                <Smartphone className="w-3 h-3 text-[#00e599]" />
-                9:16 VERTICAL
-              </span>
-
-              <button
-                type="button"
-                onClick={() => setShowSafeZones(!showSafeZones)}
-                className={`text-[10px] px-2 py-0.5 rounded border transition-colors flex items-center gap-1 font-mono ${
-                  showSafeZones
-                    ? 'bg-[#00e599]/20 text-[#00e599] border-[#00e599]/40'
-                    : 'bg-[#151a24] text-[#718296] hover:text-white border-[#222b3b]'
-                }`}
-                title="Toggle UI Safe Zones for TikTok & Instagram Reels"
-              >
-                <Layers className="w-3 h-3" />
-                <span>Safe Zones: {showSafeZones ? 'ON' : 'OFF'}</span>
-              </button>
-            </div>
-
-            {/* 9:16 Vertical Smartphone Screen */}
-            <div className="relative w-full max-w-[260px] aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#242e3f] shadow-2xl bg-black group/player">
-              {video.videoBlobUrl ? (
-                <video
-                  src={video.videoBlobUrl}
-                  controls
-                  playsInline
-                  className="w-full h-full object-cover"
-                  poster={video.thumbnailUrl}
+        /* STATE 2: LOADED VIDEO PREVIEW (Two-column layout inside card: Phone on Left, Specs & AI Profile on Right) */
+        <div className="flex-1 flex flex-col sm:flex-row gap-4 items-center sm:items-stretch">
+          {/* Left Side: 9:16 Vertical Smartphone Viewport */}
+          <div className="relative w-[175px] shrink-0 aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#242e3f] shadow-2xl bg-black group/player self-center sm:self-auto">
+            {video.videoBlobUrl ? (
+              <video
+                src={video.videoBlobUrl}
+                controls
+                playsInline
+                className="w-full h-full object-cover"
+                poster={video.thumbnailUrl}
+              />
+            ) : (
+              <>
+                <img
+                  src={video.thumbnailUrl}
+                  alt={video.title}
+                  className={`w-full h-full object-cover transition-opacity duration-300 ${
+                    isPlaying ? 'opacity-80' : 'opacity-95'
+                  }`}
                 />
-              ) : (
-                <>
-                  <img
-                    src={video.thumbnailUrl}
-                    alt={video.title}
-                    className={`w-full h-full object-cover transition-opacity duration-300 ${
-                      isPlaying ? 'opacity-80' : 'opacity-95'
-                    }`}
-                  />
 
-                  {/* Centered Play Button */}
-                  <button
-                    onClick={() => setIsPlaying(!isPlaying)}
-                    className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#00e599] hover:bg-[#00ffaa] text-black flex items-center justify-center shadow-lg shadow-[#00e599]/35 hover:scale-105 transition-all"
-                  >
-                    <Play className="w-5 h-5 fill-black ml-0.5" />
-                  </button>
-                </>
-              )}
+                {/* Centered Play Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  className="absolute inset-0 m-auto w-11 h-11 rounded-full bg-[#00e599] hover:bg-[#00ffaa] text-black flex items-center justify-center shadow-lg shadow-[#00e599]/40 hover:scale-105 transition-all"
+                >
+                  <Play className="w-5 h-5 fill-black ml-0.5" />
+                </button>
+              </>
+            )}
 
-              {/* TikTok / Reels UI Safe Zones Overlay */}
-              {showSafeZones && (
-                <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-2.5">
-                  <div className="border border-dashed border-[#00e599]/50 rounded py-1 px-1.5 text-[8.5px] text-[#00e599] bg-black/60 text-center font-mono">
-                    Top Bar Safe Zone
+            {/* TikTok / Reels UI Safe Zones Overlay */}
+            {showSafeZones && (
+              <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-2">
+                <div className="border border-dashed border-[#00e599]/50 rounded py-0.5 px-1 text-[7.5px] text-[#00e599] bg-black/60 text-center font-mono">
+                  Top Bar Safe
+                </div>
+                <div className="flex justify-between items-center px-0.5">
+                  <div className="border border-dashed border-[#38bdf8]/50 rounded p-0.5 text-[7px] text-[#38bdf8] bg-black/60 font-mono">
+                    Feed
                   </div>
-                  <div className="flex justify-between items-center px-1">
-                    <div className="border border-dashed border-[#38bdf8]/50 rounded p-1 text-[8px] text-[#38bdf8] bg-black/60 font-mono">
-                      Feed Center
-                    </div>
-                    {/* Simulated Right-Rail Action Icons Safe Area */}
-                    <div className="border border-dashed border-red-400/60 rounded p-1.5 text-[8px] text-red-300 bg-black/60 font-mono text-right space-y-1">
-                      <div>♥ Likes</div>
-                      <div>💬 Comments</div>
-                      <div>↗ Share</div>
-                    </div>
-                  </div>
-                  <div className="border border-dashed border-amber-400/60 rounded p-1.5 text-[8px] text-amber-300 bg-black/60 text-center font-mono">
-                    Bottom Captions & Audio Safe Zone
+                  <div className="border border-dashed border-red-400/60 rounded p-1 text-[7px] text-red-300 bg-black/60 font-mono text-right space-y-0.5">
+                    <div>♥</div>
+                    <div>💬</div>
+                    <div>↗</div>
                   </div>
                 </div>
-              )}
+                <div className="border border-dashed border-amber-400/60 rounded py-1 px-1 text-[7.5px] text-amber-300 bg-black/60 text-center font-mono">
+                  Bottom Captions Safe
+                </div>
+              </div>
+            )}
 
-              {/* Top-Right Resolution Badge */}
-              <div className="absolute top-2.5 right-2.5 pointer-events-none">
-                <span className="bg-black/80 backdrop-blur-md text-[9px] font-mono text-white/90 px-1.5 py-0.5 rounded border border-white/10">
-                  1080×1920
+            {/* Top-Left 9:16 Badge */}
+            <div className="absolute top-2 left-2 pointer-events-none">
+              <span className="bg-black/85 backdrop-blur-md text-[8.5px] font-mono text-[#00e599] px-1.5 py-0.5 rounded border border-[#00e599]/30 font-bold flex items-center gap-1">
+                <Smartphone className="w-2.5 h-2.5" />
+                9:16
+              </span>
+            </div>
+
+            {/* Top-Right Resolution Badge */}
+            <div className="absolute top-2 right-2 pointer-events-none">
+              <span className="bg-black/80 backdrop-blur-md text-[8px] font-mono text-white/90 px-1.5 py-0.5 rounded border border-white/10">
+                FHD
+              </span>
+            </div>
+
+            {/* Bottom Duration Badge */}
+            <div className="absolute bottom-2 right-2 pointer-events-none">
+              <span className="bg-black/85 backdrop-blur-md text-[9px] font-mono text-white/90 px-1.5 py-0.5 rounded border border-white/10">
+                {video.durationFormatted}
+              </span>
+            </div>
+          </div>
+
+          {/* Right Side: Video Details, Specs & AI Biometrics */}
+          <div className="flex-1 flex flex-col justify-between space-y-2 min-w-0">
+            {/* Video Metadata Header */}
+            <div>
+              <div className="flex items-center justify-between gap-1 mb-1">
+                <span className="text-[10px] font-mono text-[#00e599] font-semibold bg-[#00e599]/10 px-2 py-0.5 rounded border border-[#00e599]/20 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-[#00e599]" />
+                  Short-Form Master
                 </span>
+
+                <button
+                  type="button"
+                  onClick={() => setShowSafeZones(!showSafeZones)}
+                  className={`text-[10px] px-2 py-0.5 rounded border transition-colors flex items-center gap-1 font-mono ${
+                    showSafeZones
+                      ? 'bg-[#00e599]/20 text-[#00e599] border-[#00e599]/40'
+                      : 'bg-[#151a24] text-[#718296] hover:text-white border-[#222b3b]'
+                  }`}
+                  title="Toggle UI Safe Zones for TikTok & Reels"
+                >
+                  <Layers className="w-3 h-3" />
+                  <span>Safe Zones: {showSafeZones ? 'ON' : 'OFF'}</span>
+                </button>
               </div>
 
-              {/* Bottom Video Title Banner (if not playing local video) */}
-              {!video.videoBlobUrl && (
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/85 to-transparent p-3 pt-8 pointer-events-none">
-                  <h3 className="text-xs font-bold text-white line-clamp-1 mb-0.5">
-                    {video.title}
-                  </h3>
-                  <p className="text-[10px] text-[#93a2b5] flex items-center justify-between">
-                    <span className="text-[#00e599] font-mono">{video.durationFormatted}</span>
-                    <span className="font-mono">Short-Form Master</span>
-                  </p>
+              <h3 className="text-sm font-bold text-white line-clamp-2 leading-snug">
+                {video.title}
+              </h3>
+              <p className="text-[11px] text-[#7f8e9f] mt-0.5">
+                Creator: <span className="text-white font-medium">{video.creatorName}</span>
+              </p>
+            </div>
+
+            {/* Short-Form Specifications Grid */}
+            <div className="bg-[#0b0e13] border border-[#1d2430] rounded-lg p-2.5">
+              <span className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider block mb-1.5 font-mono">
+                Short Video Specs
+              </span>
+              <div className="grid grid-cols-2 gap-1.5 text-[11px]">
+                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
+                  <span className="text-[#556578] block text-[9px] uppercase font-mono">Aspect Ratio</span>
+                  <span className="text-[#00e599] font-mono font-bold">9:16 (1080×1920)</span>
                 </div>
-              )}
-            </div>
-          </div>
-
-          {/* 9:16 Short-Form Specs Row */}
-          <div className="grid grid-cols-4 gap-2 text-center text-[10px] bg-[#0c0f14] border border-[#1c222c] rounded-lg p-2 font-mono">
-            <div>
-              <span className="text-[#5e7085] block text-[9px] uppercase">Format</span>
-              <span className="text-[#00e599] font-bold">9:16 Vertical</span>
-            </div>
-            <div>
-              <span className="text-[#5e7085] block text-[9px] uppercase">Resolution</span>
-              <span className="text-white font-medium">1080 × 1920</span>
-            </div>
-            <div>
-              <span className="text-[#5e7085] block text-[9px] uppercase">Length</span>
-              <span className="text-white font-medium">{video.durationFormatted}</span>
-            </div>
-            <div>
-              <span className="text-[#5e7085] block text-[9px] uppercase">Target</span>
-              <span className="text-[#38bdf8] font-medium">Reels/Shorts</span>
-            </div>
-          </div>
-
-          {/* AI Digital Twin & Voice Clone Status Module */}
-          <div className="bg-[#0d1015] border border-[#1c222c] rounded-lg p-3">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <Cpu className="w-3.5 h-3.5 text-[#00e599]" />
-                <span className="text-xs font-semibold text-white">AI Creator Profile</span>
-              </div>
-
-              <button
-                onClick={onInspectAvatar}
-                className="text-[10px] text-[#00e599] hover:text-[#00ffaa] flex items-center gap-1 font-medium transition-colors"
-              >
-                <Eye className="w-3 h-3" />
-                <span>Inspect 3D Twin</span>
-              </button>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2 text-[11px]">
-              {/* Digital Twin Face Mesh */}
-              <div className="bg-[#13171f] p-2 rounded border border-[#1d232e] flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-[#00e599]/15 border border-[#00e599]/30 flex items-center justify-center shrink-0">
-                  <CheckCircle className="w-3.5 h-3.5 text-[#00e599]" />
+                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
+                  <span className="text-[#556578] block text-[9px] uppercase font-mono">Duration</span>
+                  <span className="text-white font-mono font-medium">{video.durationFormatted}</span>
                 </div>
-                <div className="truncate">
-                  <p className="font-semibold text-white truncate">Face & Mesh Synced</p>
-                  <p className="text-[10px] text-[#818f9f]">
-                    {video.avatarProfile.confidenceScore}% Landmark Match
-                  </p>
+                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
+                  <span className="text-[#556578] block text-[9px] uppercase font-mono">Frame Rate</span>
+                  <span className="text-white font-mono font-medium">60 FPS Smooth</span>
+                </div>
+                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533]">
+                  <span className="text-[#556578] block text-[9px] uppercase font-mono">Distribution</span>
+                  <span className="text-[#38bdf8] font-mono font-medium truncate">Reels/Shorts/TikTok</span>
                 </div>
               </div>
+            </div>
 
-              {/* Voice Clone */}
-              <div className="bg-[#13171f] p-2 rounded border border-[#1d232e] flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-[#00e599]/15 border border-[#00e599]/30 flex items-center justify-center shrink-0">
-                  <Mic className="w-3.5 h-3.5 text-[#00e599]" />
+            {/* AI Creator Profile Module */}
+            <div className="bg-[#0b0e13] border border-[#1d2430] rounded-lg p-2.5">
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-1.5">
+                  <Cpu className="w-3.5 h-3.5 text-[#00e599]" />
+                  <span className="text-xs font-semibold text-white">AI Creator Profile</span>
                 </div>
-                <div className="truncate">
-                  <p className="font-semibold text-white truncate">Voice Cloned</p>
-                  <p className="text-[10px] text-[#818f9f]">44.1kHz Studio HD</p>
+
+                <button
+                  type="button"
+                  onClick={onInspectAvatar}
+                  className="text-[10px] text-[#00e599] hover:text-[#00ffaa] flex items-center gap-1 font-medium transition-colors"
+                >
+                  <Eye className="w-3 h-3" />
+                  <span>Inspect 3D Twin</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-2 gap-1.5 text-[11px]">
+                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533] flex items-center gap-1.5">
+                  <CheckCircle className="w-3.5 h-3.5 text-[#00e599] shrink-0" />
+                  <div className="truncate">
+                    <p className="font-semibold text-white truncate text-[10px]">Mesh Synced</p>
+                    <p className="text-[9px] text-[#718296] font-mono">
+                      {video.avatarProfile.confidenceScore}% Match
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-[#12161f] p-1.5 rounded border border-[#1e2533] flex items-center gap-1.5">
+                  <Mic className="w-3.5 h-3.5 text-[#00e599] shrink-0" />
+                  <div className="truncate">
+                    <p className="font-semibold text-white truncate text-[10px]">Voice Cloned</p>
+                    <p className="text-[9px] text-[#718296] font-mono">44.1kHz Studio</p>
+                  </div>
                 </div>
               </div>
             </div>
