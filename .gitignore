@@ -33,3 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local test media downloads
+/downloads/
+*.mp4
+*.mov
+*.webm
