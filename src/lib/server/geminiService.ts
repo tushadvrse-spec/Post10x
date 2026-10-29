@@ -164,7 +164,7 @@ Output ONLY valid JSON in an array format matching:
       {
         title: '5 AI tools I refuse to live without',
         hook: 'Here are 3 AI video tools that feel totally illegal to know about.',
-        script: 'Here are 3 AI video tools that feel totally illegal to know about. Number 1: 10xPost for cloning your talking head into 10 viral variations. Number 2: Whisper-v3 on Groq for instant word-by-word animated captions. Number 3: Remotion for programmatic 60fps render pipelines. Drop a comment below and I will DM you the cheat sheet.',
+        script: 'Here are 3 AI video tools that feel totally illegal to know about. Number 1: Post10x for cloning your talking head into 10 viral variations. Number 2: Whisper-v3 on Groq for instant word-by-word animated captions. Number 3: Remotion for programmatic 60fps render pipelines. Drop a comment below and I will DM you the cheat sheet.',
       },
       {
         title: 'Why do mediocre videos go viral?',

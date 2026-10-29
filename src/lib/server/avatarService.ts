@@ -21,7 +21,7 @@ export async function calibrateCreatorAvatar(
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          callback_url: `${process.env.APP_URL || 'https://api.10xpost.com'}/api/webhooks/tavus`,
+          callback_url: `${process.env.APP_URL || 'https://api.post10x.com'}/api/webhooks/tavus`,
           train_video_url: videoUrl,
           replica_name: `${creatorName}_DigitalTwin`,
         }),

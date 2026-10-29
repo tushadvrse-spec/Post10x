@@ -114,7 +114,7 @@ export const sample10Variations: VideoVariation[] = [
     title: '5 AI tools I refuse to live without',
     hookText: 'Here are 3 AI video tools that feel totally illegal to know about.',
     fullScript:
-      'Here are 3 AI video tools that feel totally illegal to know about. Number 1: 10xPost for cloning your talking head into 10 viral variations. Number 2: Whisper-v3 on Groq for instant word-by-word animated captions. Number 3: Remotion for programmatic 60fps render pipelines. Drop a comment below and I will DM you the cheat sheet.',
+      'Here are 3 AI video tools that feel totally illegal to know about. Number 1: Post10x for cloning your talking head into 10 viral variations. Number 2: Whisper-v3 on Groq for instant word-by-word animated captions. Number 3: Remotion for programmatic 60fps render pipelines. Drop a comment below and I will DM you the cheat sheet.',
     durationFormatted: '0:32',
     thumbnailUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
     status: 'ready',
@@ -198,7 +198,7 @@ export const initialTargetChannels: TargetChannel[] = [
   {
     id: 'ch_yt',
     platform: 'youtube',
-    name: '10xPost Official',
+    name: 'Post10x Official',
     username: 'YOUTUBE • ACTIVE',
     avatarUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=100&q=80',
     isConnected: true,

@@ -1,4 +1,4 @@
-# ⚡ 10xPost — 1 Video In. 10x Reach Out.
+# ⚡ Post10x — 1 Video In. 10x Reach Out.
 
 > **AI Short-Form Video Multiplication Platform**  
 > Multiply a single long-form podcast or talking-head video into 10 distinct, photorealistic vertical clips with custom viral hooks, cloned creator voice, and automated multi-channel scheduling.
@@ -44,8 +44,8 @@
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/tushadvrse-spec/10xPost.git
-cd 10xPost
+git clone https://github.com/tushadvrse-spec/Post10x.git
+cd Post10x
 ```
 
 ### 2. Install dependencies

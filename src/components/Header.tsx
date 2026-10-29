@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ credits, onOpenSettings }) => {
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
-              10xPost
+              Post10x
               <span className="text-xs px-2 py-0.5 rounded-full bg-[#00e599]/15 text-[#00e599] font-medium border border-[#00e599]/30">
                 Studio
               </span>

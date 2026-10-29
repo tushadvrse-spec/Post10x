@@ -62,7 +62,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <rect x="1.5" y="4" width="9" height="16.5" rx="4.5" fill="#00e599" />
             </svg>
           </div>
-          <span className="text-[17px] font-bold text-white tracking-tight">10xPost</span>
+          <span className="text-[17px] font-bold text-white tracking-tight">Post10x</span>
         </div>
 
         {/* Navigation Links with CREATE section heading */}

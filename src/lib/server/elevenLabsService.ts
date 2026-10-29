@@ -34,7 +34,7 @@ export async function cloneVoiceWithElevenLabs(
       formData.append('name', voiceName);
       formData.append(
         'description',
-        'Auto-calibrated voice clone from 10xPost video ingestion'
+        'Auto-calibrated voice clone from Post10x video ingestion'
       );
 
       if (typeof audioBlobOrUrl === 'string') {

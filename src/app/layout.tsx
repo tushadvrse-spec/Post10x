@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: '10xPost — 1 Video In. 10x Reach Out.',
+  title: 'Post10x — 1 Video In. 10x Reach Out.',
   description:
     'Turn 1 talking-head video into 10 unique viral variations with your AI Digital Twin, clone voice, and automated multi-channel scheduler.',
 };
